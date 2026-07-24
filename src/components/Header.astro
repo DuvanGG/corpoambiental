@@ -1,0 +1,109 @@
+---
+const nav = [
+  { label: "Inicio", href: "/", active: true },
+  { label: "Servicios", href: "/servicios" },
+  { label: "Impacto", href: "/impacto" },
+  { label: "Contacto", href: "/contacto" }
+];
+
+const whatsappNumber = "573001112233";
+const whatsappMessage = encodeURIComponent("Hola, quiero recibir más información.");
+const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+---
+
+<header class="bg-white/60 backdrop-blur-sm border-b border-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="flex items-center gap-3">
+        <img src="/assets/logo.svg" alt="corpoambiental" class="h-8 w-auto" />
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8" aria-label="Navegación principal">
+        <ul class="flex items-center gap-6">
+          {nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class={`text-sm font-medium ${
+                  item.active
+                    ? "text-[var(--color-brand)] underline decoration-2 underline-offset-4"
+                    : "text-slate-700 hover:text-[var(--color-brand)]"
+                }`}
+                aria-current={item.active ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a
+          href={whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-500 text-white text-sm font-semibold shadow-sm hover:bg-teal-600 transition"
+          aria-label="Contactar por WhatsApp"
+        >
+          <span>WhatsApp</span>
+        </a>
+
+        <button
+          class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-slate-700 hover:bg-slate-100"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          id="mobile-menu-button"
+        >
+          <span class="sr-only">Abrir menú</span>
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="md:hidden hidden">
+    <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-slate-100">
+      <nav aria-label="Navegación móvil">
+        {nav.map((item) => (
+          <a
+            href={item.href}
+            class={`block px-3 py-2 rounded-md text-base font-medium ${
+              item.active
+                ? "text-[var(--color-brand)] bg-slate-50"
+                : "text-slate-700 hover:bg-slate-50 hover:text-[var(--color-brand)]"
+            }`}
+            aria-current={item.active ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <a
+        href={whatsappHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block mt-2 px-4 py-2 rounded-full bg-teal-500 text-white text-center font-semibold"
+        aria-label="Contactar por WhatsApp"
+      >
+        WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <script type="module">
+    const btn = document.getElementById("mobile-menu-button");
+    const menu = document.getElementById("mobile-menu");
+
+    if (btn && menu) {
+      btn.addEventListener("click", () => {
+        const expanded = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", String(!expanded));
+        menu.classList.toggle("hidden");
+      });
+    }
+  </script>
+</header>

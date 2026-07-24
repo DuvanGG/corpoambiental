@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+:root {
+  --color-brand: #0b9aa6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-slate-700;
+}
