@@ -1,0 +1,25 @@
+---
+const stats = [
+  { value: "3+", label: "Años de experiencia" },
+  { value: "30+", label: "Proyectos realizados" },
+  { value: "100%", label: "Compromiso con el cliente" },
+  { value: "24h", label: "Respuesta rápida" }
+]
+---
+
+<section class="bg-slate-50 border-y border-slate-100">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid gap-6 py-12 text-center sm:grid-cols-2 lg:grid-cols-4">
+      {stats.map((item) => (
+        <div class="space-y-2">
+          <p class="text-4xl font-bold tracking-tight text-[var(--color-brand)] sm:text-5xl">
+            {item.value}
+          </p>
+          <p class="text-xs font-medium uppercase tracking-[0.25em] text-slate-500">
+            {item.label}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
