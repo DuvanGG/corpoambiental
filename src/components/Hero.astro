@@ -1,4 +1,6 @@
 ---
+import logo from "../assets/logo.svg";
+
 const whatsappNumber = "573001112233";
 const whatsappMessage = encodeURIComponent(
   "Hola, quiero más información sobre sus servicios.",
@@ -12,19 +14,19 @@ const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
       <div class="space-y-8">
         <div class="flex flex-wrap gap-2">
           <span
-            class="inline-flex items-center rounded-full border border-cyan-200 bg-cyan-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700"
+            class="inline-flex items-center rounded-full border border-[#D2E0C9] bg-[#F3F7F0] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#385229]"
           >
             Sostenibilidad
           </span>
 
           <span
-            class="inline-flex items-center rounded-full border border-cyan-200 bg-cyan-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700"
+            class="inline-flex items-center rounded-full border border-[#D2E0C9] bg-[#F3F7F0] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#385229]"
           >
             Reciclaje
           </span>
 
           <span
-            class="inline-flex items-center rounded-full border border-cyan-200 bg-cyan-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-700"
+            class="inline-flex items-center rounded-full border border-[#D2E0C9] bg-[#F3F7F0] px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#385229]"
           >
             Economía circular
           </span>
@@ -35,6 +37,8 @@ const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
             class="max-w-xl text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
           >
             Transformamos el futuro a través del
+            <span> </span
+            >
             <span class="text-[var(--color-brand)]">
               reciclaje inteligente</span
             >
@@ -52,11 +56,10 @@ const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center justify-center rounded-xl bg-cyan-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-500/20 transition hover:bg-cyan-600"
+            class="inline-flex items-center justify-center rounded-xl bg-[#567E3E] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-500/20 transition hover:bg-[#476933]"
             aria-label="Contactar por WhatsApp"
           >
             Empezar ahora
-            <span class="ml-2">→</span>
           </a>
 
           <a
@@ -70,17 +73,18 @@ const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
       <div class="relative">
         <div
-          class="overflow-hidden rounded-[2rem] bg-slate-100 shadow-2xl shadow-slate-200"
+          class="flex items-center justify-center overflow-hidden rounded-[2rem] bg-slate-100 p-5 shadow-2xl shadow-slate-200"
         >
+          <!-- object-contain garantiza que el SVG ocupe todo el espacio disponible sin deformarse ni cortarse -->
           <img
-            src="/images/foto01.jpeg" 
+            src={logo.src}
             alt="Equipo corpoambiental"
-            class="h-[320px] w-full object-cover sm:h-[420px]"
+            class="h-[320px] w-full object-contain sm:h-[420px]"
             loading="eager"
             fetchpriority="high"
           />
-        </div>
-
+        </div>          
+        <!-- 
         <div
           class="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/70 bg-white/80 p-4 shadow-lg backdrop-blur-md"
         >
@@ -97,6 +101,7 @@ const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
             </div>
           </div>
         </div>
+        -->
       </div>
     </div>
   </div>

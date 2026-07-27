@@ -7,24 +7,24 @@ export default {
     extend: {
       colors: {
         teal: {
-          400: "#2dd4bf",
-          500: "#14b8a6",
-          600: "#0ea5a4"
+          400: "#72c044ff",
+          500: "#83b665ff",
+          600: "#8bb673ff"
         },
         brand: {
-          DEFAULT: "#0b9aa6"
+          DEFAULT: "#567E3E"
         },
         slate: {
           50: "#f8fafc",
           100: "#f1f5f9",
-          700: "#334155"
+          700: "#355F3B"
         }
       },
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui", "Arial"]
       },
       boxShadow: {
-        'btn': '0 6px 20px rgba(2,132,199,0.12)'
+        'btn': '0 6px 20px rgba(2, 199, 51, 0.12)'
       }
     }
   },
