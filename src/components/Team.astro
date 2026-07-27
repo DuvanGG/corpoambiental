@@ -1,0 +1,164 @@
+---
+import { teamMembers } from "../data/team.js";
+---
+
+<section id="equipo" class="bg-[#F8FAF6] py-20 border-b border-slate-100">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+    <!-- Encabezado de sección -->
+    <div class="mx-auto mb-14 max-w-2xl text-center space-y-4">
+      <span
+        class="inline-flex items-center rounded-full bg-[#F3F7F0] border border-[#D2E0C9] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#385229]"
+      >
+        Nuestro equipo
+      </span>
+      <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+        Las personas detrás del cambio
+      </h2>
+      <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+        Profesionales comprometidos con la protección del territorio y sus comunidades.
+      </p>
+    </div>
+
+    <!-- Mosaico de imágenes -->
+    <div class="team-mosaic" id="team-mosaic">
+      {
+        teamMembers.map((member) => (
+          <div
+            class={`team-card team-card--${member.size || "normal"}`}
+            data-member-id={member.id}
+          >
+            <img
+              src={member.src}
+              alt={member.alt}
+              loading="lazy"
+              decoding="async"
+              class="team-card__img"
+            />
+            <div class="team-card__overlay">
+              <div class="team-card__info">
+                <p class="team-card__name">{member.name}</p>
+                <p class="team-card__role">{member.role}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ── Grid mosaico ───────────────────────────────────────────── */
+  .team-mosaic {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 220px;
+    gap: 12px;
+  }
+
+  @media (max-width: 1024px) {
+    .team-mosaic {
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 200px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .team-mosaic {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 180px;
+      gap: 8px;
+    }
+  }
+
+  /* ── Variantes de tamaño ────────────────────────────────────── */
+  .team-card--tall   { grid-row: span 2; }
+  .team-card--wide   { grid-column: span 2; }
+  .team-card--large  { grid-column: span 2; grid-row: span 2; }
+  .team-card--normal { /* estándar 1×1 */ }
+
+  /* En móvil, evitar que los span sean demasiado grandes */
+  @media (max-width: 640px) {
+    .team-card--large  { grid-column: span 2; grid-row: span 1; }
+    .team-card--wide   { grid-column: span 2; }
+    .team-card--tall   { grid-row: span 2; }
+  }
+
+  /* ── Tarjeta base ───────────────────────────────────────────── */
+  .team-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    cursor: pointer;
+    box-shadow: 0 2px 12px 0 rgba(56, 82, 41, 0.08);
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.35s ease;
+  }
+
+  .team-card:hover {
+    transform: scale(1.03) translateY(-4px);
+    box-shadow: 0 16px 40px 0 rgba(56, 82, 41, 0.2);
+    z-index: 10;
+  }
+
+  /* ── Imagen ─────────────────────────────────────────────────── */
+  .team-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.5s ease;
+  }
+
+  .team-card:hover .team-card__img {
+    transform: scale(1.08);
+  }
+
+  /* ── Overlay degradado ──────────────────────────────────────── */
+  .team-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(30, 50, 20, 0.82) 0%,
+      rgba(30, 50, 20, 0.2) 45%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 18px;
+  }
+
+  .team-card:hover .team-card__overlay {
+    opacity: 1;
+  }
+
+  /* ── Texto del overlay ──────────────────────────────────────── */
+  .team-card__info {
+    transform: translateY(8px);
+    transition: transform 0.35s ease;
+  }
+
+  .team-card:hover .team-card__info {
+    transform: translateY(0);
+  }
+
+  .team-card__name {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1.3;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  }
+
+  .team-card__role {
+    color: #c8e6b4;
+    font-size: 0.78rem;
+    font-weight: 500;
+    margin-top: 2px;
+    letter-spacing: 0.02em;
+  }
+</style>
