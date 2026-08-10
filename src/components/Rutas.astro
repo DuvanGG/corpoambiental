@@ -1,46 +1,102 @@
 ---
-const rutas = [
+// Datos tomados del "Mapa de Prestación del Servicio – Corpoambiental Barranquilla".
+// Cada ruta usa el color de su zona en las convenciones temáticas del mapa.
+interface Ruta {
+  title: string;
+  zone: string;
+  days: string;
+  schedule: string;
+  status: string;
+  statusClass: string;
+  description: string;
+  start: string;
+  end: string;
+  color: string;
+  path: string;
+  from: { x: number; y: number };
+  to: { x: number; y: number };
+}
+
+const rutas: Ruta[] = [
   {
-    title: "Ruta Norte",
-    zone: "Zona Industrial",
-    status: "En progreso",
-    statusClass: "bg-[#E4EDE0] text-[#385229]",
+    title: "Ruta La Chinita – San Felipe",
+    zone: "La Chinita · San Roque · El Recreo · San Felipe",
+    days: "Lunes · Miércoles · Viernes",
+    schedule: "8:00 – 14:00",
+    status: "Ruta activa",
+    statusClass: "bg-[#FCE8EF] text-[#C13A67]",
     description:
-      "Ruta activa de recolección en la zona industrial y sus alrededores.",
-    start: "Bodega Norte",
-    end: "Centro de acopio",
-    distance: "12.8 km",
-    time: "2 h 30 min",
-    color: "#567E3E",
-    path: "M100 300C200 300 250 100 400 100C550 100 600 250 700 250",
+      "Recolección puerta a puerta en la zona rosada del mapa: La Chinita, San Roque, El Recreo y sectores aledaños.",
+    start: "La Chinita",
+    end: "Centro de acopio El Pueblito",
+    color: "#E4638A",
+    path: "M100 300 C 220 300 260 120 400 120 C 540 120 610 210 720 150",
+    from: { x: 100, y: 300 },
+    to: { x: 720, y: 150 },
   },
   {
-    title: "Ruta Centro",
-    zone: "Casco Urbano",
-    status: "Completada",
-    statusClass: "bg-slate-100 text-slate-600",
+    title: "Ruta Los Olivos – El Tesoro",
+    zone: "Los Olivos · El Tesoro · Ciudad Modesto",
+    days: "Martes · Jueves",
+    schedule: "8:00 – 14:00",
+    status: "Ruta activa",
+    statusClass: "bg-[#F3E8F7] text-[#8A3D96]",
     description:
-      "Recorrido completado por los principales sectores del casco urbano.",
-    start: "Parque central",
-    end: "Centro de acopio",
-    distance: "8.4 km",
-    time: "1 h 45 min",
-    color: "#83B665",
-    path: "M150 100C300 100 350 350 500 350C650 350 750 200 750 150",
+      "Recorrido por la zona morada del mapa: Los Olivos, El Tesoro y barrios aledaños.",
+    start: "El Tesoro",
+    end: "Centro de acopio El Pueblito",
+    color: "#A458AC",
+    path: "M100 120 C 240 120 300 320 460 300 C 600 285 650 200 720 150",
+    from: { x: 100, y: 120 },
+    to: { x: 720, y: 150 },
   },
   {
-    title: "Ruta Industrial",
-    zone: "Parque Logístico",
-    status: "En progreso",
-    statusClass: "bg-[#E4EDE0] text-[#385229]",
+    title: "Ruta 7 de Abril – Villa Blanca",
+    zone: "7 de Abril · Villa Blanca · La Pradera",
+    days: "Jueves",
+    schedule: "8:00 – 14:00",
+    status: "Ruta activa",
+    statusClass: "bg-[#FDF0E3] text-[#C86F1D]",
     description:
-      "Ruta enfocada en la recolección de materiales en parques logísticos.",
-    start: "Parque logístico",
-    end: "Planta de clasificación",
-    distance: "16.2 km",
-    time: "3 h 10 min",
-    color: "#385229",
-    path: "M100 250C180 80 320 80 400 250C480 420 620 420 720 150",
+      "Ruta de la zona naranja (norte): 7 de Abril, Villa Blanca y sectores vecinos.",
+    start: "7 de Abril",
+    end: "Centro de acopio El Pueblito",
+    color: "#EF9F57",
+    path: "M100 200 C 200 60 340 60 430 180 C 520 300 640 260 720 150",
+    from: { x: 100, y: 200 },
+    to: { x: 720, y: 150 },
+  },
+  {
+    title: "Ruta Las Malvinas – El Pueblo",
+    zone: "Las Malvinas · El Pueblo · La Magdalena",
+    days: "Sábado",
+    schedule: "9:30 – 11:40",
+    status: "Ruta activa",
+    statusClass: "bg-[#FBF3D9] text-[#A8811C]",
+    description:
+      "Ruta de la zona amarilla (sur): Las Malvinas, El Pueblo y barrios aledaños.",
+    start: "Las Malvinas",
+    end: "Centro de acopio La Comunidad",
+    color: "#EFC94C",
+    path: "M100 320 C 240 340 360 240 480 260 C 600 280 650 200 720 150",
+    from: { x: 100, y: 320 },
+    to: { x: 720, y: 150 },
+  },
+  {
+    title: "Centros de Acopio",
+    zone: "El Pueblito · La Comunidad – Las Moras",
+    days: "Permanente",
+    schedule: "Recepción de material",
+    status: "Punto fijo",
+    statusClass: "bg-[#E4F4F3] text-[#2F7E7A]",
+    description:
+      "Puntos de recepción de la zona turquesa: Centro de acopio El Pueblito y Centro de acopio La Comunidad – Las Moras.",
+    start: "El Pueblito",
+    end: "La Comunidad – Las Moras",
+    color: "#7FC7C4",
+    path: "M100 250 C 300 250 520 150 720 150",
+    from: { x: 100, y: 250 },
+    to: { x: 720, y: 150 },
   },
 ];
 ---
@@ -52,11 +108,10 @@ const rutas = [
       <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
         Nuestras Rutas de Reciclaje
       </h2>
-
       <p class="text-base leading-7 text-slate-600">
-        Optimizamos cada trayecto mediante algoritmos de IA para reducir la
-        huella de carbono y maximizar la eficiencia en la recolección de
-        materiales.
+        Recorridos de recolección de Corpoambiental en Barranquilla: consulta
+        los días, horarios y barrios de cada ruta, y entrega tu material al
+        reciclador de tu zona.
       </p>
     </div>
 
@@ -96,7 +151,6 @@ const rutas = [
                   aria-label={`Mapa visual de ${ruta.title}`}
                   role="img"
                 >
-                  <!-- Ruta principal -->
                   <path
                     d={ruta.path}
                     stroke={ruta.color}
@@ -107,16 +161,11 @@ const rutas = [
                   />
 
                   <!-- Inicio -->
-                  <circle
-                    cx="100"
-                    cy="250"
-                    fill={ruta.color}
-                    r="9"
-                  />
-
+                  <circle cx={ruta.from.x} cy={ruta.from.y} r="9" fill={ruta.color} />
                   <text
-                    x="85"
-                    y="225"
+                    x={ruta.from.x}
+                    y={ruta.from.y - 18}
+                    text-anchor="middle"
                     fill="#1a1c1e"
                     font-family="Inter"
                     font-size="14"
@@ -126,16 +175,11 @@ const rutas = [
                   </text>
 
                   <!-- Fin -->
-                  <circle
-                    cx="720"
-                    cy="150"
-                    fill="#83B665"
-                    r="9"
-                  />
-
+                  <circle cx={ruta.to.x} cy={ruta.to.y} r="9" fill="#83B665" />
                   <text
-                    x="705"
-                    y="125"
+                    x={ruta.to.x}
+                    y={ruta.to.y - 18}
+                    text-anchor="middle"
                     fill="#1a1c1e"
                     font-family="Inter"
                     font-size="14"
@@ -147,24 +191,16 @@ const rutas = [
 
                 <!-- Indicador -->
                 <div class="absolute left-6 top-6 flex items-center gap-2 rounded-full border border-[#567E3E]/10 bg-white/80 px-4 py-2 backdrop-blur-md">
-                  <span
-                    class="h-2 w-2 animate-pulse rounded-full bg-[#567E3E]"
-                  ></span>
-
+                  <span class="h-2 w-2 animate-pulse rounded-full bg-[#567E3E]"></span>
                   <span class="text-xs font-semibold text-[#567E3E]">
-                    Monitoreo en Vivo
+                    {ruta.days}
                   </span>
                 </div>
 
                 <!-- Nombre de la ruta sobre el mapa -->
                 <div class="absolute bottom-6 left-6 rounded-xl bg-white/85 px-4 py-3 shadow-sm backdrop-blur-md">
-                  <p class="text-sm font-bold text-slate-900">
-                    {ruta.title}
-                  </p>
-
-                  <p class="text-xs text-slate-500">
-                    {ruta.zone}
-                  </p>
+                  <p class="text-sm font-bold text-slate-900">{ruta.title}</p>
+                  <p class="text-xs text-slate-500">{ruta.zone}</p>
                 </div>
               </div>
             </div>
@@ -177,12 +213,8 @@ const rutas = [
                     <p class="mb-1 text-sm font-medium text-[#567E3E]">
                       Ruta de reciclaje
                     </p>
-
-                    <h3 class="text-2xl font-bold text-slate-900">
-                      {ruta.title}
-                    </h3>
+                    <h3 class="text-2xl font-bold text-slate-900">{ruta.title}</h3>
                   </div>
-
                   <span
                     class={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${ruta.statusClass}`}
                   >
@@ -199,37 +231,25 @@ const rutas = [
                     <p class="text-xs font-medium uppercase tracking-wide text-slate-500">
                       Punto de inicio
                     </p>
-
-                    <p class="mt-1 text-sm font-semibold text-slate-900">
-                      {ruta.start}
-                    </p>
+                    <p class="mt-1 text-sm font-semibold text-slate-900">{ruta.start}</p>
                   </div>
-
                   <div class="rounded-xl bg-[#F3F7F0] p-4">
                     <p class="text-xs font-medium uppercase tracking-wide text-slate-500">
                       Punto final
                     </p>
-
-                    <p class="mt-1 text-sm font-semibold text-slate-900">
-                      {ruta.end}
-                    </p>
+                    <p class="mt-1 text-sm font-semibold text-slate-900">{ruta.end}</p>
                   </div>
                 </div>
               </div>
 
               <div class="mt-8 grid grid-cols-2 gap-3">
                 <div class="rounded-xl border border-slate-100 p-4">
-                  <p class="text-xs text-slate-500">Distancia</p>
-                  <p class="mt-1 text-lg font-bold text-[#385229]">
-                    {ruta.distance}
-                  </p>
+                  <p class="text-xs text-slate-500">Días</p>
+                  <p class="mt-1 text-sm font-bold text-[#385229]">{ruta.days}</p>
                 </div>
-
                 <div class="rounded-xl border border-slate-100 p-4">
-                  <p class="text-xs text-slate-500">Duración</p>
-                  <p class="mt-1 text-lg font-bold text-[#385229]">
-                    {ruta.time}
-                  </p>
+                  <p class="text-xs text-slate-500">Horario</p>
+                  <p class="mt-1 text-lg font-bold text-[#385229]">{ruta.schedule}</p>
                 </div>
               </div>
             </div>
@@ -238,22 +258,12 @@ const rutas = [
       }
 
       <!-- Botón anterior -->
-      <button
-        id="route-prev"
-        type="button"
-        class="route-control route-control--prev"
-        aria-label="Ver ruta anterior"
-      >
+      <button id="route-prev" type="button" class="route-control route-control--prev" aria-label="Ver ruta anterior">
         &#10094;
       </button>
 
       <!-- Botón siguiente -->
-      <button
-        id="route-next"
-        type="button"
-        class="route-control route-control--next"
-        aria-label="Ver ruta siguiente"
-      >
+      <button id="route-next" type="button" class="route-control route-control--next" aria-label="Ver ruta siguiente">
         &#10095;
       </button>
 
@@ -280,33 +290,19 @@ const rutas = [
     display: none;
     animation: route-fade 0.35s ease;
   }
-
   .route-slide.is-active {
     display: grid;
   }
-
   @keyframes route-fade {
-    from {
-      opacity: 0;
-      transform: translateX(12px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateX(12px); }
+    to { opacity: 1; transform: translateX(0); }
   }
-
   .route-path {
     animation: route-dash 2s linear infinite;
   }
-
   @keyframes route-dash {
-    to {
-      stroke-dashoffset: -32;
-    }
+    to { stroke-dashoffset: -32; }
   }
-
   .route-control {
     position: absolute;
     top: 50%;
@@ -322,30 +318,19 @@ const rutas = [
     box-shadow: 0 4px 14px rgba(56, 82, 41, 0.15);
     cursor: pointer;
     transform: translateY(-50%);
-    transition:
-      background 0.2s ease,
-      transform 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
   }
-
   .route-control:hover {
     background: #e4ede0;
     transform: translateY(-50%) scale(1.08);
   }
-
   .route-control:focus-visible,
   .route-dot:focus-visible {
     outline: 3px solid #83b665;
     outline-offset: 3px;
   }
-
-  .route-control--prev {
-    left: 20px;
-  }
-
-  .route-control--next {
-    right: 20px;
-  }
-
+  .route-control--prev { left: 20px; }
+  .route-control--next { right: 20px; }
   .route-dots {
     position: absolute;
     bottom: 20px;
@@ -355,7 +340,6 @@ const rutas = [
     gap: 8px;
     transform: translateX(-50%);
   }
-
   .route-dot {
     width: 9px;
     height: 9px;
@@ -364,105 +348,60 @@ const rutas = [
     border-radius: 999px;
     background: #cbd5c4;
     cursor: pointer;
-    transition:
-      width 0.2s ease,
-      background 0.2s ease;
+    transition: width 0.2s ease, background 0.2s ease;
   }
-
   .route-dot.is-active {
     width: 26px;
     background: #567e3e;
   }
-
   @media (max-width: 640px) {
-    .route-control {
-      top: 215px;
-      width: 36px;
-      height: 36px;
-    }
-
-    .route-control--prev {
-      left: 10px;
-    }
-
-    .route-control--next {
-      right: 10px;
-    }
-
-    .route-dots {
-      bottom: 14px;
-    }
+    .route-control { top: 215px; width: 36px; height: 36px; }
+    .route-control--prev { left: 10px; }
+    .route-control--next { right: 10px; }
+    .route-dots { bottom: 14px; }
   }
 </style>
 
 <script>
-  const slides = Array.from(
-    document.querySelectorAll(".route-slide")
-  );
-
-  const dots = Array.from(
-    document.querySelectorAll(".route-dot")
-  );
-
+  const slides = Array.from(document.querySelectorAll(".route-slide"));
+  const dots = Array.from(document.querySelectorAll(".route-dot"));
   const previousButton = document.querySelector("#route-prev");
   const nextButton = document.querySelector("#route-next");
 
   let currentSlide = 0;
 
-  function showSlide(index) {
+  function showSlide(index: number) {
     if (!slides.length) return;
-
     currentSlide = (index + slides.length) % slides.length;
 
     slides.forEach((slide, slideIndex) => {
       const isActive = slideIndex === currentSlide;
-
       slide.classList.toggle("is-active", isActive);
       slide.setAttribute("aria-hidden", String(!isActive));
     });
 
     dots.forEach((dot, dotIndex) => {
       const isActive = dotIndex === currentSlide;
-
       dot.classList.toggle("is-active", isActive);
       dot.setAttribute("aria-current", isActive ? "true" : "false");
     });
   }
 
-  function showPreviousSlide() {
-    showSlide(currentSlide - 1);
-  }
-
-  function showNextSlide() {
-    showSlide(currentSlide + 1);
-  }
-
-  previousButton?.addEventListener("click", showPreviousSlide);
-  nextButton?.addEventListener("click", showNextSlide);
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener("click", () => {
-      showSlide(index);
-    });
-  });
+  previousButton?.addEventListener("click", () => showSlide(currentSlide - 1));
+  nextButton?.addEventListener("click", () => showSlide(currentSlide + 1));
+  dots.forEach((dot, index) =>
+    dot.addEventListener("click", () => showSlide(index))
+  );
 
   document.addEventListener("keydown", (event) => {
     const routesSection = document.querySelector("#rutas");
-
     if (!routesSection) return;
 
-    const sectionIsVisible =
-      routesSection.getBoundingClientRect().top < window.innerHeight &&
-      routesSection.getBoundingClientRect().bottom > 0;
-
+    const rect = routesSection.getBoundingClientRect();
+    const sectionIsVisible = rect.top < window.innerHeight && rect.bottom > 0;
     if (!sectionIsVisible) return;
 
-    if (event.key === "ArrowLeft") {
-      showPreviousSlide();
-    }
-
-    if (event.key === "ArrowRight") {
-      showNextSlide();
-    }
+    if (event.key === "ArrowLeft") showSlide(currentSlide - 1);
+    if (event.key === "ArrowRight") showSlide(currentSlide + 1);
   });
 </script>
