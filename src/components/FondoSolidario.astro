@@ -1,0 +1,686 @@
+---
+import fondoImg1 from "../assets/FondoSolidario1.jpeg";
+import fondoImg2 from "../assets/FondoSolidario2.jpeg";
+import fondoImg3 from "../assets/FondoSolidario3.jpeg";
+import fondoImg4 from "../assets/FondoSolidario4.jpeg";
+import fondoImg5 from "../assets/FondoSolidario5.jpeg";
+import fondoImg6 from "../assets/FondoSolidario6.jpeg";
+import fondoImg7 from "../assets/FondoSolidario7.jpeg";
+import fondoImg8 from "../assets/FondoSolidario8.jpeg";
+
+const base = import.meta.env.BASE_URL;
+
+const pilares = [
+  {
+    icon: `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z" /></svg>`,
+    title: "Vivienda",
+    description:
+      "Apoyamos en la mejora y reparación de viviendas en mal estado o deterioradas, garantizando un techo más seguro para sus familias.",
+    color: "bg-amber-50 text-amber-700",
+    hoverColor: "group-hover:bg-amber-600",
+    iconBg: "bg-amber-100 text-amber-700",
+  },
+  {
+    icon: `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" /></svg>`,
+    title: "Alimentación",
+    description:
+      "Entrega de mercados e insumos básicos para asegurar la nutrición y tranquilidad del hogar en situaciones difíciles.",
+    color: "bg-orange-50 text-orange-700",
+    hoverColor: "group-hover:bg-orange-600",
+    iconBg: "bg-orange-100 text-orange-700",
+  },
+  {
+    icon: `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>`,
+    title: "Salud",
+    description:
+      "Acompañamiento en la gestión y entrega de medicamentos o apoyos requeridos para atender quebrantos de salud.",
+    color: "bg-rose-50 text-rose-700",
+    hoverColor: "group-hover:bg-rose-600",
+    iconBg: "bg-rose-100 text-rose-700",
+  },
+  {
+    icon: `<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>`,
+    title: "Educación",
+    description:
+      "Apoyo a los hijos de nuestros recicladores con útiles escolares y herramientas necesarias para que continúen sus estudios y alcancen sus metas.",
+    color: "bg-sky-50 text-sky-700",
+    hoverColor: "group-hover:bg-sky-600",
+    iconBg: "bg-sky-100 text-sky-700",
+  },
+];
+
+const iniciativas = [
+  {
+    type: "salud",
+    title: "Jornada de Salud para Nuestros Recicladores de Oficio",
+    description:
+      "Como parte de las acciones de nuestro Fondo de Solidaridad, realizamos una jornada preventiva de salud en las instalaciones de Corpoambiental. Durante la jornada, nuestros recicladores de oficio recibieron atención médica básica, chequeos preventivos, recomendaciones sobre hábitos saludables y kits de cuidado personal.",
+    extra:
+      "Con estas iniciativas reafirmamos nuestro compromiso de respaldar a nuestra comunidad recicladora no solo en su labor diaria, sino también en su bienestar físico e integral.",
+    media: [
+      { src: fondoImg1.src, type: "image", alt: "Jornada de salud - atención médica" },
+      { src: fondoImg2.src, type: "image", alt: "Jornada de salud - chequeo preventivo" },
+      { src: `${base}videos/FondoSolidario9.mp4`, type: "video", alt: "Video jornada de salud" },
+    ],
+  },
+  {
+    type: "vivienda",
+    title: "Mejoras de Vivienda para Nuestros Recicladores",
+    description:
+      "Dentro de nuestros pilares en el fondo de solidaridad, se encuentra VIVIENDA. Por ende realizamos mejoras de vivienda a nuestros recicladores, demostramos que estamos para ellos y apoyarlos para tener condiciones dignas.",
+    media: [
+      { src: fondoImg3.src, type: "image", alt: "Mejora de vivienda - antes" },
+      { src: fondoImg4.src, type: "image", alt: "Mejora de vivienda - durante" },
+      { src: `${base}videos/FondoSolidario10.mp4`, type: "video", alt: "Video mejoras de vivienda" },
+    ],
+  },
+  {
+    type: "alimentacion",
+    title: "Apoyo Alimenticio",
+    description:
+      "En este espacio se logra visualizar el apoyo alimenticio para estos recicladores. Recordarles que aún hay esperanza y estamos para ellos.",
+    media: [
+      { src: fondoImg5.src, type: "image", alt: "Entrega de mercados" },
+      { src: fondoImg6.src, type: "image", alt: "Apoyo alimenticio" },
+      { src: `${base}videos/FondoSolidario11.mp4`, type: "video", alt: "Video apoyo alimenticio" },
+    ],
+  },
+  {
+    type: "Educación",
+    title: "Procesos de certificación en competencias laborales",
+    description:
+      "El aprendizaje o tecnificación del oficio siempre será un reto para la Corporación, sin embargo nos enfocamos en suministrar las herramientas necesarias para que nuestros recicladores cuenten con los insumos pedagógicos necesarios para aprender.",
+    media: [
+      { src: fondoImg3.src, type: "image", alt: "Mejora de Educación - antes" },
+      { src: fondoImg4.src, type: "image", alt: "Mejora de Educación - durante" },
+      { src: `${base}videos/FondoSolidario10.mp4`, type: "video", alt: "Video mejoras de Educación" },
+    ],
+  },
+  {
+    type: "Salud",
+    title: "Mantenimiento de carretillas",
+    description:
+      "Cada mes realizamos la entrega o adecuación de carretillas para los recicladores de oficio.",
+    media: [
+      { src: fondoImg3.src, type: "image", alt: "Mejora de Salud - antes" },
+      { src: fondoImg4.src, type: "image", alt: "Mejora de Salud - durante" },
+      { src: fondoImg4.src, type: "image", alt: "Mejora de Salud - durante" },
+    ],
+  },
+];
+
+const beneficiados = [
+  { src: fondoImg7.src, alt: "Reciclador beneficiado 1" },
+  { src: fondoImg8.src, alt: "Reciclador beneficiado 2" },
+];
+---
+
+<section id="fondo-solidario" class="fondo-solidario-section">
+
+  <!-- ========== HERO BANNER ========== -->
+  <div class="fondo-hero">
+    <div class="fondo-hero__overlay"></div>
+    <div class="fondo-hero__content">
+      <h2 class="fondo-hero__title">Fondo de Solidaridad</h2>
+      <p class="fondo-hero__subtitle">
+        Respaldo y apoyo directo a nuestros recicladores y sus familias en los momentos en que más lo necesitan.
+      </p>
+    </div>
+  </div>
+
+  <!-- ========== INTRODUCCIÓN ========== -->
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+    <div class="fondo-intro">
+      <div class="fondo-intro__icon-wrap">
+        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+        </svg>
+      </div>
+      <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-4xl mx-auto">
+        En <strong class="text-slate-900">Corpoambiental</strong>, reconocemos que los recicladores de oficio son el corazón de la sostenibilidad y el cuidado del medio ambiente. Por eso, hemos creado el <strong class="text-[#385229]">Fondo de Solidaridad</strong>, un espacio dedicado a brindar respaldo y apoyo directo a nuestros recicladores y sus familias en los momentos en que más lo necesitan.
+      </p>
+      <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-4xl mx-auto">
+        Nuestro objetivo es ser una mano amiga que aporte bienestar, seguridad y una mejor calidad de vida a quienes día a día transforman nuestras comunidades.
+      </p>
+    </div>
+
+    <!-- ========== 4 PILARES ========== -->
+    <div class="mt-16 mb-8">
+      <div class="text-center space-y-3 mb-12">
+        <span class="inline-flex items-center rounded-full bg-[#F3F7F0] border border-[#D2E0C9] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#385229]">
+          Nuestros Pilares
+        </span>
+        <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+          Acompañamiento a través de 4 pilares fundamentales
+        </h3>
+      </div>
+
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {pilares.map((pilar) => (
+          <div class="group relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#D2E0C9] hover:shadow-lg">
+            <div class={`flex h-12 w-12 items-center justify-center rounded-2xl ${pilar.iconBg} transition-colors duration-300 ${pilar.hoverColor} group-hover:text-white`}>
+              <Fragment set:html={pilar.icon} />
+            </div>
+            <h4 class="mt-5 text-lg font-bold text-slate-900 group-hover:text-[var(--color-brand)] transition-colors">
+              {pilar.title}
+            </h4>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+              {pilar.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- ========== INICIATIVAS / PILARES EN ACCIÓN ========== -->
+    <div class="mt-20 mb-16">
+      <div class="text-center space-y-3 mb-14">
+
+        <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+          Pilares del Fondo Solidario en Acción
+        </h3>
+      </div>
+
+      <div class="space-y-20">
+        {iniciativas.map((ini, idx) => (
+          <div class={`fondo-iniciativa ${idx % 2 !== 0 ? 'fondo-iniciativa--reversed' : ''}`}>
+            <!-- Texto -->
+            <div class="fondo-iniciativa__text">
+              <div class="space-y-4">
+                <h4 class="text-xl sm:text-2xl font-bold text-slate-900 leading-tight">
+                  {ini.title}
+                </h4>
+                <p class="text-base text-slate-600 leading-relaxed">
+                  {ini.description}
+                </p>
+                {ini.extra && (
+                  <p class="text-sm text-slate-500 leading-relaxed italic border-l-4 border-[#D2E0C9] pl-4">
+                    {ini.extra}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <!-- Media grid -->
+            <div class="fondo-iniciativa__media">
+              {ini.media.map((m) =>
+                m.type === "video" ? (
+                  <div class="fondo-media-card fondo-media-card--video">
+                    <video
+                      src={m.src}
+                      controls
+                      preload="metadata"
+                      class="fondo-media-card__content"
+                      aria-label={m.alt}
+                    >
+                      Tu navegador no soporta video HTML5.
+                    </video>
+                    <div class="fondo-media-card__play-badge">
+                      <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                      <span class="text-xs font-semibold">Video</span>
+                    </div>
+                  </div>
+                ) : (
+                  <div class="fondo-media-card">
+                    <img
+                      src={m.src}
+                      alt={m.alt}
+                      loading="lazy"
+                      decoding="async"
+                      class="fondo-media-card__content"
+                    />
+                  </div>
+                )
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- ========== BENEFICIADOS (CARRUSEL) ========== -->
+<div class="fondo-beneficiados">
+  <div class="text-center space-y-3 mb-10">
+    <span class="inline-flex items-center rounded-full bg-[#F3F7F0] border border-[#D2E0C9] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#385229]">
+      Historias de Impacto
+    </span>
+    <h3 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+      Recicladores beneficiados con el Fondo de Solidaridad
+    </h3>
+    <p class="text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
+      Estos son algunos de los recicladores que han sido beneficiados con el fondo de solidaridad.
+    </p>
+  </div>
+
+  <!-- Contenedor del Carrusel -->
+  <div class="relative max-w-5xl mx-auto px-4 sm:px-10">
+    <!-- Botón Izquierda -->
+    <button
+      id="carousel-prev"
+      class="absolute left-0 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md border border-slate-200 text-slate-700 transition hover:bg-[#567E3E] hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
+      aria-label="Anterior"
+    >
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <!-- Track del Carrusel -->
+    <div
+      id="carousel-track"
+      class="flex gap-6 overflow-x-auto scroll-smooth py-4 px-2 no-scrollbar cursor-grab active:cursor-grabbing"
+    >
+      {beneficiados.map((b) => (
+        <div class="fondo-beneficiado-card shrink-0">
+          <img
+            src={b.src}
+            alt={b.alt}
+            loading="lazy"
+            decoding="async"
+            class="fondo-beneficiado-card__img"
+          />
+          <div class="fondo-beneficiado-card__overlay">
+            <div class="fondo-beneficiado-card__badge">
+              <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+              <span class="text-xs font-semibold">Beneficiado</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Botón Derecha -->
+    <button
+      id="carousel-next"
+      class="absolute right-0 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md border border-slate-200 text-slate-700 transition hover:bg-[#567E3E] hover:text-white disabled:opacity-30 disabled:cursor-not-allowed"
+      aria-label="Siguiente"
+    >
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  /* Ocultar barra de scroll en navegadores */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Control del tamaño reducido de las tarjetas en Desktop */
+  .fondo-beneficiado-card {
+    position: relative;
+    width: 260px; /* Ancho fijo reducido */
+    height: 340px; /* Altura controlada */
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(56, 82, 41, 0.1);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  @media (min-width: 640px) {
+    .fondo-beneficiado-card {
+      width: 280px;
+      height: 360px;
+    }
+  }
+
+  .fondo-beneficiado-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(56, 82, 41, 0.18);
+  }
+
+  .fondo-beneficiado-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.5s ease;
+  }
+
+  .fondo-beneficiado-card:hover .fondo-beneficiado-card__img {
+    transform: scale(1.05);
+  }
+
+  .fondo-beneficiado-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(30, 50, 20, 0.75) 0%,
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+  }
+
+  .fondo-beneficiado-card:hover .fondo-beneficiado-card__overlay {
+    opacity: 1;
+  }
+
+  .fondo-beneficiado-card__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+</style>
+
+<script>
+  // Lógica de desplazamiento e interactividad del carrusel
+  const track = document.getElementById('carousel-track');
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+
+  if (track && prevBtn && nextBtn) {
+    const cardWidth = 300; // Ancho + gap aproximadamente
+
+    prevBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+  }
+</script>
+
+  </div>
+</section>
+
+<style>
+  /* ── Hero Banner ──────────────────────────────────────────────── */
+  .fondo-solidario-section {
+    background: #ffffff;
+    padding-bottom: 5rem;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .fondo-hero {
+    position: relative;
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      linear-gradient(135deg, #1a3a12 0%, #2d5a1e 40%, #3d7a2a 70%, #567E3E 100%);
+    overflow: hidden;
+  }
+
+  .fondo-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 80%, rgba(255,255,255,0.06) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.04) 0%, transparent 50%);
+  }
+
+  .fondo-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='p' width='60' height='60' patternUnits='userSpaceOnUse'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='rgba(255,255,255,0.04)'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23p)'/%3E%3C/svg%3E");
+    opacity: 0.6;
+  }
+
+  .fondo-hero__content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 3rem 1.5rem;
+    max-width: 48rem;
+  }
+
+  .fondo-hero__title {
+    margin-top: 1rem;
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  @media (min-width: 640px) {
+    .fondo-hero__title {
+      font-size: 3rem;
+    }
+    .fondo-hero {
+      min-height: 280px;
+    }
+  }
+
+  .fondo-hero__subtitle {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (min-width: 640px) {
+    .fondo-hero__subtitle {
+      font-size: 1.125rem;
+    }
+  }
+
+  /* ── Introducción ────────────────────────────────────────────── */
+  .fondo-intro {
+    text-align: center;
+    padding: 3rem 0;
+    max-width: 52rem;
+    margin: 0 auto;
+  }
+
+  .fondo-intro__icon-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1.25rem;
+    background: #E4EDE0;
+    color: #385229;
+    margin-bottom: 1.5rem;
+    animation: fondo-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes fondo-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  /* ── Iniciativas (alternadas) ────────────────────────────────── */
+  .fondo-iniciativa {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .fondo-iniciativa {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .fondo-iniciativa__text {
+    order: 1;
+  }
+
+  .fondo-iniciativa__media {
+    order: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  @media (min-width: 768px) {
+    .fondo-iniciativa--reversed .fondo-iniciativa__text {
+      order: 2;
+    }
+    .fondo-iniciativa--reversed .fondo-iniciativa__media {
+      order: 1;
+    }
+  }
+
+  /* ── Media Cards ─────────────────────────────────────────────── */
+  .fondo-media-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(56, 82, 41, 0.08);
+    transition:
+      transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      box-shadow 0.35s ease;
+  }
+
+  .fondo-media-card:hover {
+    transform: scale(1.03) translateY(-4px);
+    box-shadow: 0 16px 40px rgba(56, 82, 41, 0.18);
+    z-index: 10;
+  }
+
+  .fondo-media-card__content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+    min-height: 160px;
+    max-height: 240px;
+  }
+
+  .fondo-media-card:hover .fondo-media-card__content {
+    transform: scale(1.05);
+  }
+
+  .fondo-media-card--video:hover .fondo-media-card__content {
+    transform: none;
+  }
+
+  .fondo-media-card__play-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(30, 50, 20, 0.75);
+    backdrop-filter: blur(6px);
+    color: #ffffff;
+    padding: 4px 10px;
+    border-radius: 999px;
+    pointer-events: none;
+  }
+
+  /* ── Beneficiados ────────────────────────────────────────────── */
+  .fondo-beneficiados {
+    padding: 0rem;
+  }
+
+  .fondo-beneficiado-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(56, 82, 41, 0.1);
+    transition:
+      transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      box-shadow 0.35s ease;
+    aspect-ratio: 4 / 5;
+  }
+
+  .fondo-beneficiado-card:hover {
+    transform: scale(1.03) translateY(-4px);
+    box-shadow: 0 16px 40px rgba(56, 82, 41, 0.2);
+  }
+
+  .fondo-beneficiado-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.5s ease;
+  }
+
+  .fondo-beneficiado-card:hover .fondo-beneficiado-card__img {
+    transform: scale(1.06);
+  }
+
+  .fondo-beneficiado-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(30, 50, 20, 0.7) 0%,
+      rgba(30, 50, 20, 0.15) 40%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+  }
+
+  .fondo-beneficiado-card:hover .fondo-beneficiado-card__overlay {
+    opacity: 1;
+  }
+
+  .fondo-beneficiado-card__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 999px;
+    transform: translateY(8px);
+    transition: transform 0.35s ease;
+  }
+
+  .fondo-beneficiado-card:hover .fondo-beneficiado-card__badge {
+    transform: translateY(0);
+  }
+
+  /* ── Responsive tweaks ───────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .fondo-iniciativa__media {
+      grid-template-columns: 1fr 1fr;
+    }
+    .fondo-iniciativa__media > :last-child {
+      grid-column: 1 / -1;
+    }
+
+    .fondo-hero__title {
+      font-size: 1.75rem;
+    }
+
+    .fondo-hero {
+      min-height: 260px;
+    }
+
+    .fondo-beneficiado-card {
+      aspect-ratio: 3 / 4;
+    }
+  }
+</style>

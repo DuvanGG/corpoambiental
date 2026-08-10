@@ -6,33 +6,202 @@ const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
 <section id="contacto" class="bg-slate-50 py-20 border-t border-slate-100">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="rounded-[2rem] bg-slate-900 px-6 py-14 text-center shadow-2xl sm:px-10 lg:px-16">
-      <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-        ¿Listo para liderar el cambio?
+    
+    <!-- Encabezado de la Sección -->
+    <div class="mx-auto text-center space-y-4 mb-10">
+      <span class="inline-flex items-center rounded-full bg-[#F3F7F0] border border-[#D2E0C9] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#385229]">
+        Atención al Ciudadano
+      </span>
+      <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+        Peticiones, Quejas, Reclamos y Solicitudes (PQRS)
       </h2>
-
-      <p class="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg">
-        Únete a las empresas que ya están transformando sus residuos en valor y construyendo un futuro más sostenible.
+      <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+        Completa el formulario a continuación para radicar tu solicitud y nuestro equipo te responderá a la brevedad.
       </p>
-
-      <div class="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-        <a
-          href={whatsappHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center justify-center rounded-xl bg-[#567E3E] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#476933]"
-          aria-label="Contactar por WhatsApp"
-        >
-          Contactar por WhatsApp
-        </a>
-
-        <a
-          href="#servicios"
-          class="inline-flex items-center justify-center rounded-xl border border-slate-700 bg-transparent px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
-        >
-          Ver servicios
-        </a>
-      </div>
     </div>
+
+    <!-- Formulario PQRS Centrado -->
+    <div class="max-w-2xl mx-auto rounded-[2rem] bg-white p-8 sm:p-10 shadow-xl border border-slate-100">
+      <form id="pqrs-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+        
+        <input type="hidden" name="access_key" value="TU_ACCESS_KEY_AQUI" />
+        <input type="hidden" name="subject" value="Nueva PQRS Radicada - Corpoambiental" />
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
+
+        <div class="grid gap-6 sm:grid-cols-2">
+          <!-- Tipo de Solicitud -->
+          <div class="sm:col-span-2 space-y-2">
+            <label for="tipo_pqrs" class="block text-sm font-medium text-slate-700">
+              Tipo de Solicitud <span class="text-rose-500">*</span>
+            </label>
+            <select
+              id="tipo_pqrs"
+              name="tipo_pqrs"
+              required
+              class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 focus:border-[#567E3E] focus:outline-none focus:ring-2 focus:ring-[#567E3E]/20"
+            >
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="Petición">Petición</option>
+              <option value="Queja">Queja</option>
+              <option value="Reclamo">Reclamo</option>
+              <option value="Sugerencia">Sugerencia / Felicitación</option>
+            </select>
+          </div>
+
+          <!-- Nombre Completo -->
+          <div class="space-y-2">
+            <label for="nombre" class="block text-sm font-medium text-slate-700">
+              Nombre Completo <span class="text-rose-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              required
+              placeholder="Ej. María Pérez"
+              class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm text-slate-800 focus:border-[#567E3E] focus:outline-none focus:ring-2 focus:ring-[#567E3E]/20"
+            />
+          </div>
+
+          <!-- Cédula / NIT
+          <div class="space-y-2">
+            <label for="documento" class="block text-sm font-medium text-slate-700">
+              Cédula / NIT <span class="text-rose-500">*</span>
+            </label>
+            <input
+              type="text"
+              id="documento"
+              name="documento"
+              required
+              placeholder="Ej. 1098765432"
+              class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm text-slate-800 focus:border-[#567E3E] focus:outline-none focus:ring-2 focus:ring-[#567E3E]/20"
+            />
+          </div> -->
+          <!-- Correo -->
+          <div class="space-y-2">
+            <label for="email" class="block text-sm font-medium text-slate-700">
+              Correo Electrónico <span class="text-rose-500">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="ejemplo@correo.com"
+              class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm text-slate-800 focus:border-[#567E3E] focus:outline-none focus:ring-2 focus:ring-[#567E3E]/20"
+            />
+          </div>
+
+          <!-- Teléfono 
+          <div class="space-y-2">
+            <label for="telefono" class="block text-sm font-medium text-slate-700">
+              Teléfono / Celular <span class="text-rose-500">*</span>
+            </label>
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              required
+              placeholder="Ej. 3001234567"
+              class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm text-slate-800 focus:border-[#567E3E] focus:outline-none focus:ring-2 focus:ring-[#567E3E]/20"
+            />
+          </div>
+          -->
+        </div>
+
+        <!-- Asunto -->
+        <div class="space-y-2">
+          <label for="asunto" class="block text-sm font-medium text-slate-700">
+            Asunto <span class="text-rose-500">*</span>
+          </label>
+          <input
+            type="text"
+            id="asunto"
+            name="asunto"
+            required
+            placeholder="Resumen del motivo de la solicitud"
+            class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm text-slate-800 focus:border-[#567E3E] focus:outline-none focus:ring-2 focus:ring-[#567E3E]/20"
+          />
+        </div>
+
+        <!-- Detalle del Mensaje -->
+        <div class="space-y-2">
+          <label for="mensaje" class="block text-sm font-medium text-slate-700">
+            Detalle de la Solicitud <span class="text-rose-500">*</span>
+          </label>
+          <textarea
+            id="mensaje"
+            name="mensaje"
+            rows="4"
+            required
+            placeholder="Escribe aquí los detalles de tu solicitud..."
+            class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm text-slate-800 focus:border-[#567E3E] focus:outline-none focus:ring-2 focus:ring-[#567E3E]/20 resize-none"
+          ></textarea>
+        </div>
+
+        <!-- Aceptación de datos -->
+        <div class="flex items-start gap-3">
+          <input
+            type="checkbox"
+            id="politica"
+            name="politica"
+            required
+            class="mt-1 h-4 w-4 rounded border-slate-300 text-[#567E3E] focus:ring-[#567E3E]"
+          />
+          <label for="politica" class="text-xs text-slate-600 leading-normal">
+            Acepto el tratamiento de datos personales para la respuesta de esta PQRS.
+          </label>
+        </div>
+
+        <!-- Botón Enviar -->
+        <button
+          type="submit"
+          id="submit-btn"
+          class="w-full rounded-xl bg-[#567E3E] px-6 py-3.5 text-center text-sm font-semibold text-white shadow-md transition hover:bg-[#476933]"
+        >
+          Enviar Solicitud PQRS
+        </button>
+
+        <p id="form-status" class="text-center text-sm hidden font-medium"></p>
+      </form>
+    </div>
+
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('pqrs-form') as HTMLFormElement;
+  const statusText = document.getElementById('form-status');
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+  if (form && statusText && submitBtn) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Enviando PQRS...";
+      statusText.classList.add('hidden');
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          statusText.textContent = "¡Tu PQRS ha sido enviada con éxito!";
+          statusText.className = "text-center text-sm font-medium text-emerald-600 block mt-2";
+          form.reset();
+        } else {
+          throw new Error();
+        }
+      } catch {
+        statusText.textContent = "Hubo un error al enviar. Inténtalo de nuevo o escríbenos a nuestro WhatsApp.";
+        statusText.className = "text-center text-sm font-medium text-rose-600 block mt-2";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Enviar Solicitud PQRS";
+      }
+    });
+  }
+</script>

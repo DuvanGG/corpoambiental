@@ -1,31 +1,37 @@
 ---
 const services = [
   {
-    title: "Recolección eficiente",
+    title: "Recolección",
     description:
-      "Logística optimizada para recoger residuos de forma rápida y segura.",
+      "A través de nuestros canales de atención contamos con 5 Macrorutas ubicadas en las localidades de Norte Centro Histórico, Metropolitana, Sur Oriente, Sur occidente, Riomar a través de nuestros canales nuestros usuarios pueden solicitar la recolección de los residuos garantizamos rutas efectivas y confiables.",
     link: "#",
   },
   {
-    title: "Procesamiento eco-amigable",
+    title: "Clasificación",
     description:
-      "Transformamos materiales con procesos responsables y sostenibles.",
+      "Contamos con personal capacitado en la clasificación de materiales aprovechables y certificados por el SENA en la norma de competencia laboral (Recolectar residuos sólidos según procedimiento de aprovechamiento y normativa ambiental).",
     link: "#",
   },
   {
-    title: "Consultoría en sostenibilidad",
+    title: "Transporte",
     description:
-      "Te ayudamos a mejorar tus procesos y a reducir tu impacto ambiental.",
+      "Contamos con vehículos que cumplen los requisitos necesarios para prestar un servicio de transporte teniendo en cuenta el volumen de material reciclable a recuperar, cumpliendo así parámetros normativos establecidos para el traslado de los residuos a nuestros centros de acopio.",
+    link: "#",
+  },
+  {
+    title: "Certificación de disposición final",
+    description:
+      "Contamos con la legitimidad para emitir certificados de disposición final garantizando la entrega de materiales aprovechables a cualquiera de nuestros centros de acopio.",
     link: "#",
   },
 ];
 ---
 
-<section id="servicios" class="bg-slate-50 py-20">
+<section id="servicios" class="bg-slate-50 py-8 scroll-mt-20">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="mx-auto max-w-2xl text-center">
+    <div class="mx-auto text-center">
       <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-        Soluciones que regeneran
+        Servicios
       </h2>
       <p class="mt-4 text-base leading-7 text-slate-600">
         Unimos ingeniería de punta con conciencia ambiental para ofrecer
@@ -33,7 +39,7 @@ const services = [
       </p>
     </div>
 
-    <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-12 grid gap-6 lg:grid-cols-4 xl:grid-cols-4">
       {
         services.map((service) => (
           <article class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
