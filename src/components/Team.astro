@@ -5,10 +5,10 @@ import { teamMembers } from "../data/team.js";
 
 <section id="Equipo" class="bg-[#F8FAF6] py-20 border-b border-slate-100">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <!-- Encabezado de sección -->
-    <div class="mx-auto mb-14 max-w-2xl text-center space-y-4">
+    <!-- Encabezado -->
+    <div class="mx-auto mb-14 max-w-2xl space-y-4 text-center">
       <span
-        class="inline-flex items-center rounded-full bg-[#F3F7F0] border border-[#D2E0C9] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#385229]"
+        class="inline-flex items-center rounded-full border border-[#D2E0C9] bg-[#F3F7F0] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-[#385229]"
       >
         Nuestra labor, Nuestra gente, Nuestro compromiso
       </span>
@@ -18,7 +18,7 @@ import { teamMembers } from "../data/team.js";
         en el territorio.
       </h2>
 
-      <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+      <p class="text-base leading-relaxed text-slate-600 sm:text-lg">
         Personas comprometidas con la protección del territorio y sus comunidades.
       </p>
     </div>
@@ -26,10 +26,15 @@ import { teamMembers } from "../data/team.js";
     <!-- Mosaico de imágenes -->
     <div class="team-mosaic" id="team-mosaic">
       {
-        teamMembers.map((member) => (
-          <div
+        teamMembers.map((member, index) => (
+          <button
+            type="button"
             class={`team-card team-card--${member.size || "normal"}`}
-            data-member-id={member.id}
+            data-index={index}
+            data-full-src={member.src.src}
+            data-name={member.name}
+            data-role={member.role}
+            aria-label={`Ver imagen de ${member.name}`}
           >
             <Image
               src={member.src}
@@ -45,14 +50,71 @@ import { teamMembers } from "../data/team.js";
                 <p class="team-card__role">{member.role}</p>
               </div>
             </div>
-          </div>
+          </button>
         ))
       }
     </div>
   </div>
 </section>
 
+<!-- Modal / Lightbox -->
+<div
+  id="team-lightbox"
+  class="team-lightbox"
+  aria-hidden="true"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Visualizador de imágenes"
+>
+  <!-- Botón cerrar -->
+  <button
+    type="button"
+    id="lightbox-close"
+    class="team-lightbox__close"
+    aria-label="Cerrar imagen"
+  >
+    &times;
+  </button>
+
+  <!-- Imagen anterior -->
+  <button
+    type="button"
+    id="lightbox-prev"
+    class="team-lightbox__prev"
+    aria-label="Imagen anterior"
+  >
+    &#10094;
+  </button>
+
+  <!-- Contenido central -->
+  <div class="team-lightbox__content">
+    <img
+      id="lightbox-image"
+      class="team-lightbox__image"
+      src=""
+      alt=""
+    />
+
+    <div class="team-lightbox__caption">
+      <p id="lightbox-name"></p>
+      <span id="lightbox-role"></span>
+    </div>
+  </div>
+
+  <!-- Imagen siguiente -->
+  <button
+    type="button"
+    id="lightbox-next"
+    class="team-lightbox__next"
+    aria-label="Imagen siguiente"
+  >
+    &#10095;
+  </button>
+</div>
+
 <style>
+  /* Mosaico */
+
   .team-mosaic {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -75,6 +137,8 @@ import { teamMembers } from "../data/team.js";
     }
   }
 
+  /* Tamaños de tarjetas */
+
   .team-card--tall {
     grid-row: span 2;
   }
@@ -89,7 +153,8 @@ import { teamMembers } from "../data/team.js";
   }
 
   .team-card--normal {
-    /* Tamaño estándar 1x1 */
+    grid-column: span 1;
+    grid-row: span 1;
   }
 
   @media (max-width: 640px) {
@@ -107,11 +172,20 @@ import { teamMembers } from "../data/team.js";
     }
   }
 
+  /* Tarjeta del mosaico */
+
   .team-card {
     position: relative;
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 0;
     overflow: hidden;
+    border: 0;
     border-radius: 16px;
+    background: transparent;
     cursor: pointer;
+    text-align: left;
     box-shadow: 0 2px 12px 0 rgba(56, 82, 41, 0.08);
     transition:
       transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -119,10 +193,17 @@ import { teamMembers } from "../data/team.js";
   }
 
   .team-card:hover {
+    z-index: 10;
     transform: scale(1.03) translateY(-4px);
     box-shadow: 0 16px 40px 0 rgba(56, 82, 41, 0.2);
-    z-index: 10;
   }
+
+  .team-card:focus-visible {
+    outline: 3px solid #385229;
+    outline-offset: 4px;
+  }
+
+  /* Imagen del mosaico */
 
   .team-card__img {
     display: block;
@@ -137,9 +218,14 @@ import { teamMembers } from "../data/team.js";
     transform: scale(1.08);
   }
 
+  /* Overlay de la tarjeta */
+
   .team-card__overlay {
     position: absolute;
     inset: 0;
+    display: flex;
+    align-items: flex-end;
+    padding: 18px;
     background: linear-gradient(
       to top,
       rgba(30, 50, 20, 0.82) 0%,
@@ -148,12 +234,10 @@ import { teamMembers } from "../data/team.js";
     );
     opacity: 0;
     transition: opacity 0.35s ease;
-    display: flex;
-    align-items: flex-end;
-    padding: 18px;
   }
 
-  .team-card:hover .team-card__overlay {
+  .team-card:hover .team-card__overlay,
+  .team-card:focus-visible .team-card__overlay {
     opacity: 1;
   }
 
@@ -162,23 +246,315 @@ import { teamMembers } from "../data/team.js";
     transition: transform 0.35s ease;
   }
 
-  .team-card:hover .team-card__info {
+  .team-card:hover .team-card__info,
+  .team-card:focus-visible .team-card__info {
     transform: translateY(0);
   }
 
   .team-card__name {
     color: #ffffff;
-    font-weight: 700;
     font-size: 0.95rem;
+    font-weight: 700;
     line-height: 1.3;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   }
 
   .team-card__role {
+    margin-top: 2px;
     color: #c8e6b4;
     font-size: 0.78rem;
     font-weight: 500;
-    margin-top: 2px;
     letter-spacing: 0.02em;
   }
+
+  /* Modal */
+
+  .team-lightbox {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 99999;
+
+    display: grid;
+    place-items: center;
+
+    width: 100vw;
+    height: 100dvh;
+    padding: 24px;
+    box-sizing: border-box;
+
+    background: rgba(10, 18, 8, 0.92);
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+      opacity 0.25s ease,
+      visibility 0.25s ease;
+  }
+
+  .team-lightbox.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .team-lightbox__content {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: fit-content;
+    max-width: min(86vw, 1100px);
+    max-height: 90dvh;
+    margin: auto;
+  }
+
+  .team-lightbox__image {
+    display: block;
+
+    width: auto;
+    height: auto;
+    max-width: min(86vw, 1100px);
+    max-height: 78dvh;
+
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  }
+
+  .team-lightbox__caption {
+    width: 100%;
+    padding-top: 14px;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .team-lightbox__caption p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .team-lightbox__caption span {
+    display: block;
+    margin-top: 4px;
+    color: #c8e6b4;
+    font-size: 0.85rem;
+  }
+
+  /* Botones del modal */
+
+  .team-lightbox__close,
+  .team-lightbox__prev,
+  .team-lightbox__next {
+    position: fixed;
+    z-index: 100000;
+
+    display: grid;
+    place-items: center;
+
+    width: 44px;
+    height: 44px;
+    padding: 0;
+
+    border: 0;
+    border-radius: 999px;
+
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
+
+    cursor: pointer;
+
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .team-lightbox__close:hover,
+  .team-lightbox__prev:hover,
+  .team-lightbox__next:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .team-lightbox__close:focus-visible,
+  .team-lightbox__prev:focus-visible,
+  .team-lightbox__next:focus-visible {
+    outline: 3px solid #c8e6b4;
+    outline-offset: 3px;
+  }
+
+  .team-lightbox__close {
+    top: 24px;
+    right: 24px;
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .team-lightbox__prev {
+    top: 50%;
+    left: 24px;
+    font-size: 1.5rem;
+    transform: translateY(-50%);
+  }
+
+  .team-lightbox__prev:hover {
+    transform: translateY(-50%) scale(1.08);
+  }
+
+  .team-lightbox__next {
+    top: 50%;
+    right: 24px;
+    font-size: 1.5rem;
+    transform: translateY(-50%);
+  }
+
+  .team-lightbox__next:hover {
+    transform: translateY(-50%) scale(1.08);
+  }
+
+  @media (max-width: 640px) {
+    .team-lightbox {
+      padding: 16px;
+    }
+
+    .team-lightbox__content {
+      max-width: 78vw;
+    }
+
+    .team-lightbox__image {
+      max-width: 78vw;
+      max-height: 72dvh;
+    }
+
+    .team-lightbox__close {
+      top: 14px;
+      right: 14px;
+    }
+
+    .team-lightbox__prev {
+      left: 8px;
+    }
+
+    .team-lightbox__next {
+      right: 8px;
+    }
+  }
 </style>
+
+<script>
+  const lightbox = document.querySelector("#team-lightbox");
+  const lightboxImage = document.querySelector("#lightbox-image");
+  const lightboxName = document.querySelector("#lightbox-name");
+  const lightboxRole = document.querySelector("#lightbox-role");
+
+  const closeButton = document.querySelector("#lightbox-close");
+  const previousButton = document.querySelector("#lightbox-prev");
+  const nextButton = document.querySelector("#lightbox-next");
+
+  const cards = Array.from(
+    document.querySelectorAll(".team-card")
+  );
+
+  let currentIndex = 0;
+
+  function showImage(index) {
+    const card = cards[index];
+
+    if (!card || !lightboxImage) {
+      return;
+    }
+
+    currentIndex = index;
+
+    lightboxImage.src = card.dataset.fullSrc || "";
+    lightboxImage.alt = card.querySelector("img")?.alt || "";
+
+    if (lightboxName) {
+      lightboxName.textContent = card.dataset.name || "";
+    }
+
+    if (lightboxRole) {
+      lightboxRole.textContent = card.dataset.role || "";
+    }
+  }
+
+  function openLightbox(index) {
+    if (!lightbox) {
+      return;
+    }
+
+    showImage(index);
+
+    lightbox.classList.add("is-open");
+    lightbox.setAttribute("aria-hidden", "false");
+
+    document.body.style.overflow = "hidden";
+
+    closeButton?.focus();
+  }
+
+  function closeLightbox() {
+    if (!lightbox) {
+      return;
+    }
+
+    lightbox.classList.remove("is-open");
+    lightbox.setAttribute("aria-hidden", "true");
+
+    document.body.style.overflow = "";
+  }
+
+  function showPreviousImage() {
+    const previousIndex =
+      (currentIndex - 1 + cards.length) % cards.length;
+
+    showImage(previousIndex);
+  }
+
+  function showNextImage() {
+    const nextIndex =
+      (currentIndex + 1) % cards.length;
+
+    showImage(nextIndex);
+  }
+
+  cards.forEach((card, index) => {
+    card.addEventListener("click", () => {
+      openLightbox(index);
+    });
+  });
+
+  closeButton?.addEventListener("click", closeLightbox);
+
+  previousButton?.addEventListener("click", showPreviousImage);
+
+  nextButton?.addEventListener("click", showNextImage);
+
+  lightbox?.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!lightbox?.classList.contains("is-open")) {
+      return;
+    }
+
+    if (event.key === "Escape") {
+      closeLightbox();
+    }
+
+    if (event.key === "ArrowLeft") {
+      showPreviousImage();
+    }
+
+    if (event.key === "ArrowRight") {
+      showNextImage();
+    }
+  });
+</script>
