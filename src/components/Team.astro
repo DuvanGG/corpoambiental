@@ -1,10 +1,10 @@
 ---
+import { Image } from "astro:assets";
 import { teamMembers } from "../data/team.js";
 ---
 
 <section id="Equipo" class="bg-[#F8FAF6] py-20 border-b border-slate-100">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
     <!-- Encabezado de sección -->
     <div class="mx-auto mb-14 max-w-2xl text-center space-y-4">
       <span
@@ -12,11 +12,14 @@ import { teamMembers } from "../data/team.js";
       >
         Nuestra labor, Nuestra gente, Nuestro compromiso
       </span>
+
       <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-        Un vistazo a nuestro equipo, el día a día y el impacto de nuestro trabajo en el territorio.
+        Un vistazo a nuestro equipo, el día a día y el impacto de nuestro trabajo
+        en el territorio.
       </h2>
+
       <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
-        Personas comprometidos con la protección del territorio y sus comunidades.
+        Personas comprometidas con la protección del territorio y sus comunidades.
       </p>
     </div>
 
@@ -28,13 +31,14 @@ import { teamMembers } from "../data/team.js";
             class={`team-card team-card--${member.size || "normal"}`}
             data-member-id={member.id}
           >
-            <img
+            <Image
               src={member.src}
               alt={member.alt}
               loading="lazy"
               decoding="async"
               class="team-card__img"
             />
+
             <div class="team-card__overlay">
               <div class="team-card__info">
                 <p class="team-card__name">{member.name}</p>
@@ -49,7 +53,6 @@ import { teamMembers } from "../data/team.js";
 </section>
 
 <style>
-  /* ── Grid mosaico ───────────────────────────────────────────── */
   .team-mosaic {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -72,28 +75,47 @@ import { teamMembers } from "../data/team.js";
     }
   }
 
-  /* ── Variantes de tamaño ────────────────────────────────────── */
-  .team-card--tall   { grid-row: span 2; }
-  .team-card--wide   { grid-column: span 2; }
-  .team-card--large  { grid-column: span 2; grid-row: span 2; }
-  .team-card--normal { /* estándar 1×1 */ }
-
-  /* En móvil, evitar que los span sean demasiado grandes */
-  @media (max-width: 640px) {
-    .team-card--large  { grid-column: span 2; grid-row: span 1; }
-    .team-card--wide   { grid-column: span 2; }
-    .team-card--tall   { grid-row: span 2; }
+  .team-card--tall {
+    grid-row: span 2;
   }
 
-  /* ── Tarjeta base ───────────────────────────────────────────── */
+  .team-card--wide {
+    grid-column: span 2;
+  }
+
+  .team-card--large {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .team-card--normal {
+    /* Tamaño estándar 1x1 */
+  }
+
+  @media (max-width: 640px) {
+    .team-card--large {
+      grid-column: span 2;
+      grid-row: span 1;
+    }
+
+    .team-card--wide {
+      grid-column: span 2;
+    }
+
+    .team-card--tall {
+      grid-row: span 2;
+    }
+  }
+
   .team-card {
     position: relative;
     overflow: hidden;
     border-radius: 16px;
     cursor: pointer;
     box-shadow: 0 2px 12px 0 rgba(56, 82, 41, 0.08);
-    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                box-shadow 0.35s ease;
+    transition:
+      transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      box-shadow 0.35s ease;
   }
 
   .team-card:hover {
@@ -102,8 +124,8 @@ import { teamMembers } from "../data/team.js";
     z-index: 10;
   }
 
-  /* ── Imagen ─────────────────────────────────────────────────── */
   .team-card__img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -115,7 +137,6 @@ import { teamMembers } from "../data/team.js";
     transform: scale(1.08);
   }
 
-  /* ── Overlay degradado ──────────────────────────────────────── */
   .team-card__overlay {
     position: absolute;
     inset: 0;
@@ -136,7 +157,6 @@ import { teamMembers } from "../data/team.js";
     opacity: 1;
   }
 
-  /* ── Texto del overlay ──────────────────────────────────────── */
   .team-card__info {
     transform: translateY(8px);
     transition: transform 0.35s ease;
@@ -151,7 +171,7 @@ import { teamMembers } from "../data/team.js";
     font-weight: 700;
     font-size: 0.95rem;
     line-height: 1.3;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
   }
 
   .team-card__role {
