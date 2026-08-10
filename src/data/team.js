@@ -36,7 +36,7 @@ export const teamMembers = [
     name: "Ilva Nubia Herrera Gálvez",
     role: "Experta Comisionada de la #CR",
     src: photo8,
-    size: "tall",
+    size: "",
     alt: "Ilva Nubia Herrera Gálvez – Experta Comisionada de la #CRA",
   },
   {
@@ -52,7 +52,7 @@ export const teamMembers = [
     name: "Somos Corpoambiental",
     role: "💚♻️",
     src: photo3,
-    size: "large",
+    size: "",
     alt: "Somos Corpoambiental – 💚♻️",
   },
   {
@@ -68,7 +68,7 @@ export const teamMembers = [
     name: "Somos Corpoambiental",
     role: "💚♻️",
     src: photo5,
-    size: "large",
+    size: "",
     alt: "Somos Corpoambiental – 💚♻️",
   },
   {
@@ -76,7 +76,7 @@ export const teamMembers = [
     name: "Somos Corpoambiental",
     role: "💚♻️",
     src: photo6,
-    size: "tall",
+    size: "",
     alt: "Somos Corpoambiental - 💚♻️",
   },
   {
@@ -84,7 +84,7 @@ export const teamMembers = [
     name: "Somos Corpoambiental",
     role: "💚♻️",
     src: photo7,
-    size: "tall",
+    size: "",
     alt: "Somos Corpoambiental - 💚♻️",
   },
   {
@@ -92,7 +92,7 @@ export const teamMembers = [
     name: "Somos Corpoambiental",
     role: "💚♻️",
     src: photo1,
-    size: "tall",
+    size: "",
     alt: "Somos Corpoambiental – 💚♻️",
   },
   {
@@ -108,7 +108,7 @@ export const teamMembers = [
     name: "Reutiliza",
     role: "A estos materiales les espera una segunda vida ♻️",
     src: photo10,
-    size: "tall",
+    size: "",
     alt: "Reutiliza – A estos materiales les espera una segunda vida ♻️",
   },
   {
@@ -116,7 +116,7 @@ export const teamMembers = [
     name: "Separa",
     role: "A estos materiales les espera una segunda vida ♻️",
     src: photo11,
-    size: "tall",
+    size: "",
     alt: "Separa – A estos materiales les espera una segunda vida ♻️",
   },
   {
