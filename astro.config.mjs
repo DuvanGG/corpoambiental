@@ -1,12 +1,16 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from "@tailwindcss/vite";
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: 'https://github.com/DuvanGG/corpoambiental',
-  base: '/corpoambiental'
+  site: 'https://duvangg.github.io',
+  base: '/corpoambiental',
+  integrations: [
+    sitemap(),
+  ],
 });
