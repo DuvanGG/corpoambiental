@@ -17,6 +17,9 @@ const whatsappMessage = encodeURIComponent(
   "Hola, quiero recibir más información sobre sus servicios.",
 );
 const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+const facebookHref = `https://www.facebook.com/p/Corpoambiental-100057452169140/`;
+const instagramHref = `https://www.instagram.com/corpoambiental.esp/`;
+const tiktokHref = `https://www.tiktok.com/@corpoambiental.e`;
 ---
 
 <footer class="bg-slate-950 text-slate-200">
@@ -74,20 +77,40 @@ const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
           </li>
           <li>
             <a
-              href="mailto:corpoambiencosta@gmail.com"
+              href={instagramHref}
+              target="_blank"
+              rel="noopener noreferrer"
               class="transition hover:text-white"
             >
-              corpoambiencosta@gmail.com
+              Instagram
             </a>
           </li>
           <li>
             <a
-              href="https://www.google.com/maps/search/?api=1&query=Cra+24+%23+110-41%2C+Barrio+Los+Olivos+II%2C+Barranquilla%2C+Colombia"
+              href={facebookHref}
               target="_blank"
               rel="noopener noreferrer"
-              class="transition-colors hover:text-[#385229]"
+              class="transition hover:text-white"
             >
-              Cra 24 # 110-41, Barrio Los Olivos II - Barranquilla, Colombia
+              Facebook
+            </a>
+          </li>
+          <li>
+            <a
+              href={tiktokHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="transition hover:text-white"
+            >
+              Tiktok
+            </a>
+          </li>
+          <li>
+            <a
+              href="mailto:corpoambiencosta@gmail.com"
+              class="transition hover:text-white"
+            >
+              corpoambiencosta@gmail.com
             </a>
           </li>
         </ul>
@@ -101,6 +124,16 @@ const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
         <ul class="mt-4 space-y-3 text-sm text-slate-400">
           <li>Lunes a viernes: 8:00 a. m. - 5:00 p. m.</li>
           <li>Sábados: 8:00 a. m. - 3:00 p. m.</li>
+          <li>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Cra+24+%23+110-41%2C+Barrio+Los+Olivos+II%2C+Barranquilla%2C+Colombia"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="transition hover:text-white"
+            >
+              Cra 24 # 110-41, Barrio Los Olivos II - Barranquilla, Colombia
+            </a>
+          </li>
         </ul>
       </div>
     </div>
